@@ -1,4 +1,4 @@
-## v-layer
+## vl-layer
  vue弹窗组件，vue-layer改良版，新增参数属性方法
  
  vue-layer文档 https://github.com/zuoyanart/vue-layer#readme
