@@ -1,0 +1,29 @@
+{
+  "name": "vl-layer",
+  "version": "0.0.1",
+  "description": "vue弹窗组件，vue-layer改良版，新增参数属性方法",
+  "main": "vl-layer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gjTool/vl-layer.git"
+  },
+  "author": "gjTool",
+  "keywords": [
+      "vue",
+      "layer",
+      "vue-layer",
+      "vl-layer",
+      "javascript",
+      "plugin",
+      "library",
+      "mobile"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gjTool/v-layer/issues"
+  },
+  "homepage": "https://github.com/gjTool/v-layer#readme"
+}
