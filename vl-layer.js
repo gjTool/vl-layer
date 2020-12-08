@@ -4173,19 +4173,27 @@ var dragvue_type_template_id_053989da_staticRenderFns = []
     },
     max: function max() {
       //最大化窗口
-      var height = document.documentElement.clientHeight;
+      // var height = document.documentElement.clientHeight;
 
-      if (height % 2 === 1) {
-        height += 1;
-      }
+      // if (height % 2 === 1) {
+      //   height += 1;
+      // }
 
-      this.addStyle = {
-        overflow: "hidden",
-        left: "50%",
-        width: "100%",
-        height: height + "px",
-        minHeight: "42px"
-      };
+      // this.addStyle = {
+      //   overflow: "hidden",
+      //   left: "50%",
+      //   width: "100%",
+      //   height: height + "px",
+      //   minHeight: "42px"
+      // };
+	  this.addStyle = {
+	    overflow: "hidden",
+	    width: "100%",
+	    height: "100%",
+		minHeight: "42px",
+		left: 0,
+		top:0
+	  };
       this.maxMiniState = 2;
       this.nomove = true;
       var dom = document.getElementById(this.options.id)

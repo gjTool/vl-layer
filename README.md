@@ -19,9 +19,9 @@ Vue.prototype.$layer = layer(Vue);
  新增参数属性如下
  ```js
  
-    //新增方法this.$layer.canmove(id,true) 
+    //新增方法this.$layer.canmove(layerId,true) 
     
-    this.$layer.iframe({
+   let layerId = this.$layer.iframe({
       title:"xxx",
       content:{
         content:world, //组件
@@ -37,7 +37,8 @@ Vue.prototype.$layer = layer(Vue);
       end:()=>{
         console.log("end")
       },
-      //弹窗关闭/取消之前， return false阻止关闭  return true不阻止   回调参数 close可以关闭弹窗
+      //弹窗关闭/取消之前， return false阻止关闭  return true不阻止   
+	  //回调参数 close关闭弹窗
       beforeClose:(id,close)=>{
         console.log("beforeClose",id)
         setTimeout(()=>{
