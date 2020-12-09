@@ -1,9 +1,10 @@
-## vl-layer
+[![npm version](https://img.shields.io/npm/v/vl-layer.svg)](https://www.npmjs.com/package/vl-layer) [![npm downloads](https://img.shields.io/npm/dt/vl-layer.svg)](https://www.npmjs.com/package/vl-layer)   [![MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/gjTool/vl-layer/blob/master/LICENSE) [![GitHub issues](https://img.shields.io/github/issues/gjTool/vl-layer.svg)](https://github.com/gjTool/vl-layer/issues) [![GitHub stars](https://img.shields.io/github/stars/gjTool/vl-layer.svg?style=social)](https://github.com/gjTool/vl-layer/stargazers) [![GitHub forks](https://img.shields.io/github/forks/gjTool/vl-layer.svg?style=social)](https://github.com/gjTool/vl-layer/network/members)  
+
  vue弹窗组件，vue-layer改良版，新增参数属性方法
  
  vue-layer文档 https://github.com/zuoyanart/vue-layer#readme
- 
- install
+ vl-layer github地址 https://github.com/gjTool/vl-layer/
+### Install
 ```shell
 npm install vl-layer
 ```
@@ -16,7 +17,7 @@ import 'vl-layer/vl-layer.css';
 Vue.prototype.$layer = layer(Vue);
 ```
  
- 新增参数属性如下
+### 新增参数属性如下
  ```js
  
     //新增方法this.$layer.canmove(layerId,true) 

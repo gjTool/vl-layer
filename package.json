@@ -12,18 +12,19 @@
   },
   "author": "gjTool",
   "keywords": [
-      "vue",
-      "layer",
-      "vue-layer",
-      "vl-layer",
-      "javascript",
-      "plugin",
-      "library",
-      "mobile"
+    "vue",
+    "layer",
+    "vue-layer",
+    "vl-layer",
+    "javascript",
+    "plugin",
+    "library",
+    "mobile"
   ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/gjTool/v-layer/issues"
   },
-  "homepage": "https://github.com/gjTool/v-layer#readme"
+  "homepage": "https://github.com/gjTool/v-layer#readme",
+  "dependencies": {}
 }
