@@ -46,6 +46,18 @@ Vue.prototype.$layer = layer(Vue);
           close(id)
         },2000)
         return false
-      }
+      },
+	  //还原状态回调 state：1 是由最小化还原 2是由最大化还原
+	  maxminiCallback:(id,state)=>{
+	    console.log('maxminiCallback', id,state);
+	  },
+	  //最小化回调
+	  miniCallback: id => {
+	    console.log('miniCallback', id);
+	  },
+	  //最大化回调
+	  maxCallback: id => {
+	    console.log('maxCallback', id);
+	  }
     })
 ```
