@@ -6575,7 +6575,7 @@
             var docWidth = document.documentElement.clientWidth;
             var width = dom.getBoundingClientRect().width;
             var height = dom.getBoundingClientRect().height;
-            if (options.area === "auto") {
+            if (options.offset === "auto") {
               dom.style.left = (docWidth / 2 - width) + "px";
               dom.style.top = (docHeight / 2 - height) + "px";
               let oldW = docWidth,
