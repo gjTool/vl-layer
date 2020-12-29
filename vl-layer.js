@@ -4904,14 +4904,16 @@
               };
               this.maxMiniState = 1;
               var dom = document.getElementById(this.options.id)
-              if (this.options.canmove) {
-                var title = dom.getElementsByClassName("vl-notice-title")[0]
-                title.style.cursor = "move";
-              }
-              if (this.options.resize) {
-                var resize = dom.getElementsByClassName("vl-drag-resize")[0];
-                resize.style.display = "none";
-              }
+			  if(dom){
+				  if (this.options.canmove) {
+				    var title = dom.getElementsByClassName("vl-notice-title")[0]
+				    title.style.cursor = "move";
+				  }
+				  if (this.options.resize) {
+				    var resize = dom.getElementsByClassName("vl-drag-resize")[0];
+				    resize.style.display = "none";
+				  }
+			  }
               this.options.miniCallback && this.options.miniCallback(this.options.id)
             },
             max: function max() {
@@ -4927,14 +4929,16 @@
               this.maxMiniState = 2;
               this.nomove = true;
               var dom = document.getElementById(this.options.id)
-              if (this.options.canmove) {
-                var title = dom.getElementsByClassName("vl-notice-title")[0];
-                title.style.cursor = "inherit";
-              }
-              if (this.options.resize) {
-                var resize = dom.getElementsByClassName("vl-drag-resize")[0];
-                resize.style.display = "none";
-              }
+			  if(dom){
+				  if (this.options.canmove) {
+				    var title = dom.getElementsByClassName("vl-notice-title")[0];
+				    title.style.cursor = "inherit";
+				  }
+				  if (this.options.resize) {
+				    var resize = dom.getElementsByClassName("vl-drag-resize")[0];
+				    resize.style.display = "none";
+				  }
+			  }
               this.options.maxCallback && this.options.maxCallback(this.options.id)
             },
             maxmini: function maxmini() {
@@ -6567,28 +6571,30 @@
               self.instancesVue[id].mask = maskInstance.vm; // }
             }
             var dom = document.getElementById(options.id)
-            if (!options.canmove) {
-              dom.getElementsByClassName("vl-notice-title")[0].style["cursor"] =
-                "initial";
-            }
-            var docHeight = document.documentElement.clientHeight;
-            var docWidth = document.documentElement.clientWidth;
-            var width = dom.getBoundingClientRect().width;
-            var height = dom.getBoundingClientRect().height;
-            if (options.offset === "auto") {
-              dom.style.left = (docWidth / 2 - width) + "px";
-              dom.style.top = (docHeight / 2 - height) + "px";
-              let oldW = docWidth,
-                oldH = docHeight;
-              window.onresize = function() {
-                docHeight = document.documentElement.clientHeight;
-                docWidth = document.documentElement.clientWidth;
-                dom.style.left = (docWidth / 2 - width) + "px";
-                dom.style.top = (docHeight / 2 - height) + "px";
-              }
-            } else {
-              window.onresize = null
-            }
+			if(dom){
+				if (!options.canmove ) {
+				  dom.getElementsByClassName("vl-notice-title")[0].style["cursor"] =
+				    "initial";
+				}
+				var docHeight = document.documentElement.clientHeight;
+				var docWidth = document.documentElement.clientWidth;
+				var width = dom.getBoundingClientRect().width;
+				var height = dom.getBoundingClientRect().height;
+				if (options.offset === "auto") {
+				  dom.style.left = (docWidth / 2 - width) + "px";
+				  dom.style.top = (docHeight / 2 - height) + "px";
+				  let oldW = docWidth,
+				    oldH = docHeight;
+				  window.onresize = function() {
+				    docHeight = document.documentElement.clientHeight;
+				    docWidth = document.documentElement.clientWidth;
+				    dom.style.left = (docWidth / 2 - width) + "px";
+				    dom.style.top = (docHeight / 2 - height) + "px";
+				  }
+				} else {
+				  window.onresize = null
+				}
+			}
             var fn = self.instancesVue[id].main.success;
             fn && fn.call(self, id)
             return id;
