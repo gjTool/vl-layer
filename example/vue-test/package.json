@@ -12,7 +12,7 @@
     "dependencies": {
         "axios": "^0.19.2",
         "element-ui": "^2.13.2",
-        "vl-layer": "0.0.5",
+        "vl-layer": "0.0.7",
         "vue": "^2.6.11",
         "vue-i18n": "^8.19.0",
         "vue-layer": "^1.2.0",

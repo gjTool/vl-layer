@@ -6585,15 +6585,7 @@
 				  dom.style.top = (docHeight / 2 - height) + "px";
 				  let oldW = docWidth,
 				    oldH = docHeight;
-				  window.onresize = function() {
-				    docHeight = document.documentElement.clientHeight;
-				    docWidth = document.documentElement.clientWidth;
-				    dom.style.left = (docWidth / 2 - width) + "px";
-				    dom.style.top = (docHeight / 2 - height) + "px";
-				  }
-				} else {
-				  window.onresize = null
-				}
+				} 
 			}
             var fn = self.instancesVue[id].main.success;
             fn && fn.call(self, id)

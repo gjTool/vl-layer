@@ -196,7 +196,7 @@ Vue.prototype.$layer = layer(Vue);
 
 ## Method
 ```javascript
- layer.alert(content, [options, yes]);
+ this.$layer.alert(content, [options, yes]);
  // options和yes可以省略， 如果您不愿意写options，则可以直接写确定按钮的函数，即yes
  // content 可以为html
  //yes如果是个function，这会自动添加参数layerid，
@@ -206,7 +206,7 @@ Vue.prototype.$layer = layer(Vue);
 ```
 
 ```javascript
- layer.confirm(content, [options, yes, cancel]);
+ this.$layer.confirm(content, [options, yes, cancel]);
   // options，yes和cancel可以省略， 如果您不愿意写options，则可以直接写确定按钮的函数，即yes，或者覆盖默认的cancel方法。PS：yes和cancel方法不能互换
   //content 可以为html
    //yes,cancel如果是个function，这会自动添加参数layerid，
@@ -216,32 +216,32 @@ Vue.prototype.$layer = layer(Vue);
 ```
 
 ```javascript
- layer.loadding(option);
+ this.$layer.loadding(option);
   // options ={time:3}，3秒自动关闭
   //options = {content:'请等待'} //可传入文字
 ```
 
 ```javascript
- layer.msg(content, [options, end]);
+ this.$layer.msg(content, [options, end]);
  // options和end可以省略， 如果您不愿意写options，则可以直接写时间到期的回调即可，即end方法
  // 默认msg的关闭时间为1.5秒
  // content 可以为html
 ```
 
 ```javascript
- layer.prompt(options, yes);
+ this.$layer.prompt(options, yes);
  //特殊参数: value 要回显的值
  //formType: 1text,2password,3textarea
 ```
 
 ```javascript
-layer.tips(content, follow, options);
+this.$layer.tips(content, follow, options);
 //content 可以为html
 //follow对css选择器，用来定位目标
 ```
 
 ```javascript
-layer.iframe({
+this.$layer.iframe({
   content: {
     content: componentName, //传递的组件对象
     parent: this,//当前的vue对象
@@ -258,14 +258,14 @@ layer.iframe({
 ```
 
 ```javascript
-layer.close(layerid);
-layer.closeAll(type);
+this.$layer.close(layerid);
+this.$layer.closeAll(type);
 //弹窗最大化
-layer.full(layerid);
+this.$layer.full(layerid);
 //弹窗最小化
-layer.min(layerid);
+this.$layer.min(layerid);
 //还原弹窗
-layer.restore(layerid);
+this.$layer.restore(layerid);
 //弹窗是否可以拖动 true可以 false不能
-layer.canmove(layerid,true)
+this.$layer.canmove(layerid,true)
 ```
