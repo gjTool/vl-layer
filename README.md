@@ -147,8 +147,8 @@ Vue.prototype.$layer = layer(Vue);
    type: 0, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
    title: '信息',
    content: '',
-   area: 'auto',
-   offset: 'auto',
+   area: 'auto',//['400px','300px']
+   offset: 'auto',//[20,10]
    icon: -1,
    btn: '确定',
    time: 0,
@@ -259,7 +259,7 @@ this.$layer.iframe({
 
 ```javascript
 this.$layer.close(layerid);
-this.$layer.closeAll(type);
+this.$layer.closeAll(type); // type:'loading' 'alert' 'confirm' 'msg' 'prompt' 'iframe'
 //弹窗最大化
 this.$layer.full(layerid);
 //弹窗最小化

@@ -4906,12 +4906,16 @@
               var dom = document.getElementById(this.options.id)
 			  if(dom){
 				  if (this.options.canmove) {
-				    var title = dom.getElementsByClassName("vl-notice-title")[0]
-				    title.style.cursor = "move";
+				    var title = dom.getElementsByClassName("vl-notice-title")[0];
+            if(title){
+               title.style.cursor = "move";
+            }
 				  }
 				  if (this.options.resize) {
 				    var resize = dom.getElementsByClassName("vl-drag-resize")[0];
-				    resize.style.display = "none";
+            if(resize){
+               resize.style.display = "none";
+            }
 				  }
 			  }
               this.options.miniCallback && this.options.miniCallback(this.options.id)
@@ -4932,11 +4936,15 @@
 			  if(dom){
 				  if (this.options.canmove) {
 				    var title = dom.getElementsByClassName("vl-notice-title")[0];
-				    title.style.cursor = "inherit";
+            if(title){
+               title.style.cursor = "inherit";
+            }
 				  }
 				  if (this.options.resize) {
 				    var resize = dom.getElementsByClassName("vl-drag-resize")[0];
-				    resize.style.display = "none";
+            if(resize){
+                resize.style.display = "none";
+            }
 				  }
 			  }
               this.options.maxCallback && this.options.maxCallback(this.options.id)
@@ -4960,11 +4968,15 @@
 
               if (this.options.canmove) {
                 var title = dom.getElementsByClassName("vl-notice-title")[0]
-                title.style.cursor = "move";
+                  if(title){
+                     title.style.cursor = "move";
+                  }
               }
               if (this.options.resize) {
                 var resize = dom.getElementsByClassName("vl-drag-resize")[0];
-                resize.style.display = "block";
+                if(resize){
+                  resize.style.display = "block";
+                }
               }
             },
             moveStart: function moveStart(event) {
@@ -6573,8 +6585,10 @@
             var dom = document.getElementById(options.id)
 			if(dom){
 				if (!options.canmove ) {
-				  dom.getElementsByClassName("vl-notice-title")[0].style["cursor"] =
-				    "initial";
+            var title = dom.getElementsByClassName("vl-notice-title")[0];
+            if(title){
+               title.style.cursor = "inherit";
+            }
 				}
 				var docHeight = document.documentElement.clientHeight;
 				var docWidth = document.documentElement.clientWidth;
@@ -6585,7 +6599,15 @@
 				  dom.style.top = (docHeight / 2 - height) + "px";
 				  let oldW = docWidth,
 				    oldH = docHeight;
-				} 
+				  window.onresize = function() {
+				    docHeight = document.documentElement.clientHeight;
+				    docWidth = document.documentElement.clientWidth;
+				    dom.style.left = (docWidth / 2 - width) + "px";
+				    dom.style.top = (docHeight / 2 - height) + "px";
+				  }
+				} else {
+				  window.onresize = null
+				}
 			}
             var fn = self.instancesVue[id].main.success;
             fn && fn.call(self, id)
@@ -6810,10 +6832,12 @@
             var dom = document.getElementById(id);
             if (dom) {
               var title = dom.getElementsByClassName("vl-notice-title")[0]
-              if (bool) {
-                title.style["cursor"] = "move"
-              } else {
-                title.style["cursor"] = "initial"
+              if(title){
+                if (bool) {
+                  title.style["cursor"] = "move"
+                } else {
+                  title.style["cursor"] = "initial"
+                }
               }
             }
 
