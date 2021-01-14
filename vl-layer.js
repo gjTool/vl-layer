@@ -4957,11 +4957,14 @@
               var docWidth = document.documentElement.clientWidth;
               var width = dom.getBoundingClientRect().width;
               var height = dom.getBoundingClientRect().height;
-
               this.addStyle = {
-                left: (docWidth - width) / 2 + "px",
-                top: (docHeight - height) / 2 + "px",
-              };
+               left: dom._left+ "px",
+                 top: dom._top+ "px",
+              }
+              // this.addStyle = {
+              //   left: (docWidth - width) / 2 + "px",
+              //   top: (docHeight - height) / 2 + "px",
+              // };
               this.options.maxminiCallback && this.options.maxminiCallback(this.options.id, this.maxMiniState)
               this.maxMiniState = 0;
               this.nomove = false;
@@ -5025,6 +5028,10 @@
 
                 o.style.left = left + "px";
                 o.style.top = top + "px";
+                if(this.maxMiniState===0){
+                  o._left = left;
+                   o._top = top;
+                }
                 this.resetZIndex();
               }
               this.options.moveCallback && this.options.moveCallback(this.options.id)
@@ -6604,9 +6611,17 @@
 				    docWidth = document.documentElement.clientWidth;
 				    dom.style.left = (docWidth / 2 - width) + "px";
 				    dom.style.top = (docHeight / 2 - height) + "px";
+            dom._left =  (docWidth / 2 - width)
+            dom._top = (docHeight / 2 - height)
 				  }
+          dom._left =  (docWidth / 2 - width)
+          dom._top = (docHeight / 2 - height)
 				} else {
-				  window.onresize = null
+				  window.onresize = null;
+          if(options.offset){
+            dom._left =  options.offset[0]
+            dom._top =  options.offset[1]
+          }
 				}
 			}
             var fn = self.instancesVue[id].main.success;
