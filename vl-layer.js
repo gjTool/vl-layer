@@ -4904,7 +4904,9 @@
               };
               this.maxMiniState = 1;
               var dom = document.getElementById(this.options.id)
+
 			  if(dom){
+          dom._maxMiniState = 1
 				  if (this.options.canmove) {
 				    var title = dom.getElementsByClassName("vl-notice-title")[0];
             if(title){
@@ -4934,6 +4936,7 @@
               this.nomove = true;
               var dom = document.getElementById(this.options.id)
 			  if(dom){
+          dom._maxMiniState = 2
 				  if (this.options.canmove) {
 				    var title = dom.getElementsByClassName("vl-notice-title")[0];
             if(title){
@@ -4968,7 +4971,7 @@
               this.options.maxminiCallback && this.options.maxminiCallback(this.options.id, this.maxMiniState)
               this.maxMiniState = 0;
               this.nomove = false;
-
+              dom._maxMiniState = 0
               if (this.options.canmove) {
                 var title = dom.getElementsByClassName("vl-notice-title")[0]
                   if(title){
@@ -6601,18 +6604,21 @@
 				var docWidth = document.documentElement.clientWidth;
 				var width = dom.getBoundingClientRect().width;
 				var height = dom.getBoundingClientRect().height;
+        var _this = this;
 				if (options.offset === "auto") {
 				  dom.style.left = (docWidth / 2 - width) + "px";
 				  dom.style.top = (docHeight / 2 - height) + "px";
 				  let oldW = docWidth,
 				    oldH = docHeight;
 				  window.onresize = function() {
-				    docHeight = document.documentElement.clientHeight;
-				    docWidth = document.documentElement.clientWidth;
-				    dom.style.left = (docWidth / 2 - width) + "px";
-				    dom.style.top = (docHeight / 2 - height) + "px";
-            dom._left =  (docWidth / 2 - width)
-            dom._top = (docHeight / 2 - height)
+           if(dom._maxMiniState===0 || dom._maxMiniState===undefined){
+              docHeight = document.documentElement.clientHeight;
+              docWidth = document.documentElement.clientWidth;
+              dom.style.left = (docWidth / 2 - width) + "px";
+              dom.style.top = (docHeight / 2 - height) + "px";
+              dom._left =  (docWidth / 2 - width)
+              dom._top = (docHeight / 2 - height)
+            }
 				  }
           dom._left =  (docWidth / 2 - width)
           dom._top = (docHeight / 2 - height)
@@ -6999,7 +7005,11 @@
 
           self.restore = function() {
             var id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-            document.querySelector('#' + id + ' .lv-icon-huanyuan').click();
+            let huanyuan = document.querySelector('#' + id + ' .vlicon-huanyuan')
+            if(!huanyuan){
+              huanyuan = document.querySelector('#' + id + ' .lv-icon-max')
+            }
+            huanyuan.click();
           };
           /**
            * get offset
