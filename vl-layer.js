@@ -4508,7 +4508,12 @@
           }, {
             key: "moveStart",
             value: function moveStart(event, options) {
-              options.offset = options.offset == 'auto' ? [] : options.offset;
+              if (options.offset === "auto" || options.offset === "leftTop" ||
+                options.offset === "leftBottom" || options.offset === "rightTop" || options.offset ===
+                "rightBottom") {
+                options.offset = []
+              }
+              // options.offset = options.offset == 'auto' ? [] : options.offset;
 
               if (options.offset.length == 0) {
                 options.offset.push(document.getElementById(options.id + "").offsetLeft);
@@ -4905,21 +4910,21 @@
               this.maxMiniState = 1;
               var dom = document.getElementById(this.options.id)
 
-			  if(dom){
-          dom._maxMiniState = 1
-				  if (this.options.canmove) {
-				    var title = dom.getElementsByClassName("vl-notice-title")[0];
-            if(title){
-               title.style.cursor = "move";
-            }
-				  }
-				  if (this.options.resize) {
-				    var resize = dom.getElementsByClassName("vl-drag-resize")[0];
-            if(resize){
-               resize.style.display = "none";
-            }
-				  }
-			  }
+              if (dom) {
+                dom._maxMiniState = 1
+                if (this.options.canmove) {
+                  var title = dom.getElementsByClassName("vl-notice-title")[0];
+                  if (title) {
+                    title.style.cursor = "move";
+                  }
+                }
+                if (this.options.resize) {
+                  var resize = dom.getElementsByClassName("vl-drag-resize")[0];
+                  if (resize) {
+                    resize.style.display = "none";
+                  }
+                }
+              }
               this.options.miniCallback && this.options.miniCallback(this.options.id)
             },
             max: function max() {
@@ -4935,21 +4940,21 @@
               this.maxMiniState = 2;
               this.nomove = true;
               var dom = document.getElementById(this.options.id)
-			  if(dom){
-          dom._maxMiniState = 2
-				  if (this.options.canmove) {
-				    var title = dom.getElementsByClassName("vl-notice-title")[0];
-            if(title){
-               title.style.cursor = "inherit";
-            }
-				  }
-				  if (this.options.resize) {
-				    var resize = dom.getElementsByClassName("vl-drag-resize")[0];
-            if(resize){
-                resize.style.display = "none";
-            }
-				  }
-			  }
+              if (dom) {
+                dom._maxMiniState = 2
+                if (this.options.canmove) {
+                  var title = dom.getElementsByClassName("vl-notice-title")[0];
+                  if (title) {
+                    title.style.cursor = "inherit";
+                  }
+                }
+                if (this.options.resize) {
+                  var resize = dom.getElementsByClassName("vl-drag-resize")[0];
+                  if (resize) {
+                    resize.style.display = "none";
+                  }
+                }
+              }
               this.options.maxCallback && this.options.maxCallback(this.options.id)
             },
             maxmini: function maxmini() {
@@ -4958,11 +4963,11 @@
 
               var docHeight = document.documentElement.clientHeight;
               var docWidth = document.documentElement.clientWidth;
-              var width = dom.getBoundingClientRect().width;
-              var height = dom.getBoundingClientRect().height;
+              var width = dom.offsetWidth;
+              var height = dom.offsetHeight;
               this.addStyle = {
-               left: dom._left+ "px",
-                 top: dom._top+ "px",
+                left: dom._left + "px",
+                top: dom._top + "px",
               }
               // this.addStyle = {
               //   left: (docWidth - width) / 2 + "px",
@@ -4974,13 +4979,13 @@
               dom._maxMiniState = 0
               if (this.options.canmove) {
                 var title = dom.getElementsByClassName("vl-notice-title")[0]
-                  if(title){
-                     title.style.cursor = "move";
-                  }
+                if (title) {
+                  title.style.cursor = "move";
+                }
               }
               if (this.options.resize) {
                 var resize = dom.getElementsByClassName("vl-drag-resize")[0];
-                if(resize){
+                if (resize) {
                   resize.style.display = "block";
                 }
               }
@@ -5010,8 +5015,8 @@
                 var left = this.options.offset[0] + (event.clientX - this.moveLeft);
                 var docHeight = document.documentElement.clientHeight;
                 var docWidth = document.documentElement.clientWidth;
-                var width = o.getBoundingClientRect().width;
-                var height = o.getBoundingClientRect().height;
+                var width = o.offsetWidth;
+                var height = o.offsetHeight;
                 if (top <= 0) {
                   //顶部边界
                   top = 0;
@@ -5031,9 +5036,9 @@
 
                 o.style.left = left + "px";
                 o.style.top = top + "px";
-                if(this.maxMiniState===0){
+                if (this.maxMiniState === 0) {
                   o._left = left;
-                   o._top = top;
+                  o._top = top;
                 }
                 this.resetZIndex();
               }
@@ -5801,7 +5806,12 @@
               }
             },
             'moveStart': function moveStart(event) {
-              this.options.offset = this.options.offset == 'auto' ? [] : this.options.offset;
+              if (this.options.offset === "auto" || this.options.offset === "leftTop" ||
+                this.options.offset === "leftBottom" || this.options.offset === "rightTop" || this.options.offset ===
+                "rightBottom") {
+                this.options.offset = []
+              }
+              // this.options.offset = this.options.offset == 'auto' ? [] : this.options.offset;
 
               if (this.options.offset.length == 0) {
                 this.options.offset.push(document.getElementById(this.options.id + "_alert").offsetLeft);
@@ -6593,43 +6603,108 @@
               self.instancesVue[id].mask = maskInstance.vm; // }
             }
             var dom = document.getElementById(options.id)
-			if(dom){
-				if (!options.canmove ) {
-            var title = dom.getElementsByClassName("vl-notice-title")[0];
-            if(title){
-               title.style.cursor = "inherit";
+            if (dom) {
+              if (!options.canmove) {
+                var title = dom.getElementsByClassName("vl-notice-title")[0];
+                if (title) {
+                  title.style.cursor = "inherit";
+                }
+              }
+              var docHeight = document.documentElement.clientHeight;
+              var docWidth = document.documentElement.clientWidth;
+              var width = dom.offsetWidth;
+              var height = dom.offsetHeight;
+              var _this = this;
+              if (options.offset === "auto") {
+                dom.style.left = (docWidth / 2 - width) + "px";
+                dom.style.top = (docHeight / 2 - height) + "px";
+                let oldW = docWidth,
+                  oldH = docHeight;
+                window.onresize = function() {
+                  if (dom._maxMiniState === 0 || dom._maxMiniState === undefined) {
+                    docHeight = document.documentElement.clientHeight;
+                    docWidth = document.documentElement.clientWidth;
+                    dom.style.left = (docWidth / 2 - width) + "px";
+                    dom.style.top = (docHeight / 2 - height) + "px";
+                    dom._left = (docWidth / 2 - width)
+                    dom._top = (docHeight / 2 - height)
+                  }
+                }
+                dom._left = (docWidth / 2 - width)
+                dom._top = (docHeight / 2 - height)
+              } else if (options.offset === "leftTop") {
+                dom.style.left = 0 + "px";
+                dom.style.top = 0 + "px";
+                window.onresize = function() {
+                  if (dom._maxMiniState === 0 || dom._maxMiniState === undefined) {
+                    dom.style.left = 0 + "px";
+                    dom.style.top = 0 + "px";
+                    dom._left = 0
+                    dom._top = 0
+                  }
+                }
+                dom._left = 0
+                dom._top = 0
+              } else if (options.offset === "leftBottom") {
+                dom.style.left = 0 + "px";
+                dom.style.top = (docHeight -height) + "px";
+                console.log(height,dom.offsetHeight,dom.clientHeight)
+                let oldW = docWidth,
+                  oldH = docHeight;
+                window.onresize = function() {
+                  if (dom._maxMiniState === 0 || dom._maxMiniState === undefined) {
+                    docHeight = document.documentElement.clientHeight;
+                    docWidth = document.documentElement.clientWidth;
+                    dom.style.left = 0 + "px";
+                    dom.style.top = (docHeight - height) + "px";
+                    dom._left = 0
+                    dom._top = (docHeight - height)
+                  }
+                }
+                dom._left = 0
+                dom._top = (docHeight - height)
+              } else if (options.offset === "rightTop") {
+                dom.style.left = (docWidth - width) + "px";
+                dom.style.top = 0 + "px";
+                let oldW = docWidth,
+                  oldH = docHeight;
+                window.onresize = function() {
+                  if (dom._maxMiniState === 0 || dom._maxMiniState === undefined) {
+                    docHeight = document.documentElement.clientHeight;
+                    docWidth = document.documentElement.clientWidth;
+                    dom.style.left = (docWidth - width) + "px";
+                    dom.style.top = 0 + "px";
+                    dom._left = (docWidth - width)
+                    dom._top = 0
+                  }
+                }
+                dom._left = (docWidth - width)
+                dom._top = 0
+              } else if (options.offset === "rightBottom") {
+                dom.style.left = (docWidth - width) + "px";
+                dom.style.top = (docHeight - height) + "px";
+                let oldW = docWidth,
+                  oldH = docHeight;
+                window.onresize = function() {
+                  if (dom._maxMiniState === 0 || dom._maxMiniState === undefined) {
+                    docHeight = document.documentElement.clientHeight;
+                    docWidth = document.documentElement.clientWidth;
+                    dom.style.left = (docWidth - width) + "px";
+                    dom.style.top = (docHeight - height) + "px";
+                    dom._left = (docWidth - width)
+                    dom._top = (docHeight - height)
+                  }
+                }
+                dom._left = (docWidth - width)
+                dom._top = (docHeight - height)
+              } else {
+                window.onresize = null;
+                if (options.offset) {
+                  dom._left = options.offset[0]
+                  dom._top = options.offset[1]
+                }
+              }
             }
-				}
-				var docHeight = document.documentElement.clientHeight;
-				var docWidth = document.documentElement.clientWidth;
-				var width = dom.getBoundingClientRect().width;
-				var height = dom.getBoundingClientRect().height;
-        var _this = this;
-				if (options.offset === "auto") {
-				  dom.style.left = (docWidth / 2 - width) + "px";
-				  dom.style.top = (docHeight / 2 - height) + "px";
-				  let oldW = docWidth,
-				    oldH = docHeight;
-				  window.onresize = function() {
-           if(dom._maxMiniState===0 || dom._maxMiniState===undefined){
-              docHeight = document.documentElement.clientHeight;
-              docWidth = document.documentElement.clientWidth;
-              dom.style.left = (docWidth / 2 - width) + "px";
-              dom.style.top = (docHeight / 2 - height) + "px";
-              dom._left =  (docWidth / 2 - width)
-              dom._top = (docHeight / 2 - height)
-            }
-				  }
-          dom._left =  (docWidth / 2 - width)
-          dom._top = (docHeight / 2 - height)
-				} else {
-				  window.onresize = null;
-          if(options.offset){
-            dom._left =  options.offset[0]
-            dom._top =  options.offset[1]
-          }
-				}
-			}
             var fn = self.instancesVue[id].main.success;
             fn && fn.call(self, id)
             return id;
@@ -6853,7 +6928,7 @@
             var dom = document.getElementById(id);
             if (dom) {
               var title = dom.getElementsByClassName("vl-notice-title")[0]
-              if(title){
+              if (title) {
                 if (bool) {
                   title.style["cursor"] = "move"
                 } else {
@@ -7006,7 +7081,7 @@
           self.restore = function() {
             var id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
             let huanyuan = document.querySelector('#' + id + ' .vlicon-huanyuan')
-            if(!huanyuan){
+            if (!huanyuan) {
               huanyuan = document.querySelector('#' + id + ' .lv-icon-max')
             }
             huanyuan.click();
