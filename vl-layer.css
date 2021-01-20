@@ -362,6 +362,7 @@
   display: inline-block;
   vertical-align: middle;
   position: relative;
+  color:#333;
 }
 
 .vl-notify.vl-notify-alert h2.vl-notice-title .lv-icon-maxmini i.vlicon-max {
@@ -374,7 +375,7 @@
 }
 
 .vl-notify.vl-notify-alert h2.vl-notice-title .lv-icon-maxmini i.vlicon-mini:hover {
-  opacity: 0.7;
+ color: #888;
 }
 
 .vl-notify.vl-notify-alert h2.vl-notice-title .lv-icon-maxmini i.vlicon-huanyuan {
