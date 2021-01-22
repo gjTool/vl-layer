@@ -5938,9 +5938,9 @@
           computed: {
             contentStyle: function contentStyle() {
               return {
-                height: parseInt(this.options.area[1]) - 50 + "px",
-                minHeight: "inherit",
-                overflow: "auto"
+                // height: parseInt(this.options.area[1]) - 50 + "px",
+                // minHeight: "inherit",
+                // overflow: "auto"
               };
             }
           },
@@ -6224,9 +6224,9 @@
             contentStyle: function contentStyle() {
               var areaHeight = (parseInt(this.options.area[1]) || 100) - 50;
               return {
-                height: areaHeight + "px",
-                minHeight: "inherit",
-                overflow: "auto"
+                // height: areaHeight + "px",
+                // minHeight: "inherit",
+                // overflow: "auto"
               };
             },
             inputType: function inputType() {
@@ -6618,8 +6618,8 @@
               var docHeight = document.documentElement.clientHeight;
               var docWidth = document.documentElement.clientWidth;
 
-              var width = dom.offsetWidth;
-              var height = dom.offsetHeight;
+              var width =0;
+              var height =0;
               if (options.area && options.area[0] && options.area[1]) {
                 width = parseFloat(options.area[0])
                 height = parseFloat(options.area[1])
