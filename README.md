@@ -7,6 +7,7 @@
 ## 更新信息
 
 - 2021.01.20 更新： 新增offset的几个固定位置:右上"rightTop"、右下"rightBottom"、左上"leftTop"、左下"leftBottom"
+- 2021.01.22 更新： 新增offset:{left:10,bottom:10}、offset:{right:10,bottom:10}、offset:{right:10,top:10}
 
 ## 快速使用
 
@@ -147,7 +148,7 @@ Vue.prototype.$layer = layer(Vue);
    type: 0, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
    title: '信息',
    content: '',
-   area: 'auto',//['400px','300px'] "rightTop" "rightBottom" "leftTop" "leftBottom"
+   area: 'auto',//['400px','300px'] "rightTop" "rightBottom" "leftTop" "leftBottom" {left:0,top:0}  {left:0,bottom:0}  {right:0,bottom:0} {right:0,top:0}
    offset: 'auto',//[20,10]
    icon: -1,
    btn: '确定',

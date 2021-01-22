@@ -4524,9 +4524,14 @@
               if (options.offset.length == 2) {
                 options.offset.push(0);
               }
+              if (!options.offset || !options.offset[0]) {
+                options.offset = []
+              }
+              if (document.getElementById(options.id + "")) {
+                options.offset[0] = document.getElementById(options.id + "").offsetLeft;
+                options.offset[1] = document.getElementById(options.id + "").offsetTop;
+              }
 
-              options.offset[0] = document.getElementById(options.id + "").offsetLeft;
-              options.offset[1] = document.getElementById(options.id + "").offsetTop;
             }
             /**
              * 拖动弹窗
@@ -6612,26 +6617,66 @@
               }
               var docHeight = document.documentElement.clientHeight;
               var docWidth = document.documentElement.clientWidth;
+
               var width = dom.offsetWidth;
               var height = dom.offsetHeight;
+              if (options.area && options.area[0] && options.area[1]) {
+                width = parseFloat(options.area[0])
+                height = parseFloat(options.area[1])
+              }
+              width = isNaN(width) ? dom.offsetWidth : width;
+              height = isNaN(height) ? dom.offsetHeight : height;
               var _this = this;
-              if (options.offset === "auto") {
-                dom.style.left = (docWidth / 2 - width) + "px";
-                dom.style.top = (docHeight / 2 - height) + "px";
+              if (Object.prototype.toString.call(options.offset) === "[object Object]") {
+                if (options.offset.left!== undefined&& !isNaN(options.offset.left)) {
+                  dom.style.left = options.offset.left + "px";
+                  dom._left = options.offset.left
+                }
+                if (options.offset.top!== undefined&&!isNaN(options.offset.top)) {
+                  dom.style.top = options.offset.top + "px"
+                  dom._top = options.offset.top
+                }
+                if (options.offset.right!== undefined&&!isNaN(options.offset.right)) {
+                  dom.style.left = (docWidth - width - options.offset.right) + "px"
+                  dom._left = (docWidth - width - options.offset.right)
+                }
+                if (options.offset.bottom!== undefined&&!isNaN(options.offset.bottom)) {
+                  dom.style.top = (docHeight - height - options.offset.bottom) + "px"
+                  dom._top = (docHeight - height - options.offset.bottom)
+                }
                 let oldW = docWidth,
                   oldH = docHeight;
                 window.onresize = function() {
                   if (dom._maxMiniState === 0 || dom._maxMiniState === undefined) {
                     docHeight = document.documentElement.clientHeight;
                     docWidth = document.documentElement.clientWidth;
-                    dom.style.left = (docWidth / 2 - width) + "px";
-                    dom.style.top = (docHeight / 2 - height) + "px";
-                    dom._left = (docWidth / 2 - width)
-                    dom._top = (docHeight / 2 - height)
+                   if (options.offset.right!== undefined&&!isNaN(options.offset.right)) {
+                     dom.style.left = (docWidth - width - options.offset.right) + "px"
+                     dom._left = (docWidth - width - options.offset.right)
+                   }
+                   if (options.offset.bottom!== undefined&&!isNaN(options.offset.bottom)) {
+                     dom.style.top = (docHeight - height - options.offset.bottom) + "px"
+                     dom._top = (docHeight - height - options.offset.bottom)
+                   }
                   }
                 }
-                dom._left = (docWidth / 2 - width)
-                dom._top = (docHeight / 2 - height)
+              } else if (options.offset === "auto") {
+                dom.style.left = (docWidth - width) / 2 + "px";
+                dom.style.top = (docHeight - height) / 2 + "px";
+                let oldW = docWidth,
+                  oldH = docHeight;
+                window.onresize = function() {
+                  if (dom._maxMiniState === 0 || dom._maxMiniState === undefined) {
+                    docHeight = document.documentElement.clientHeight;
+                    docWidth = document.documentElement.clientWidth;
+                    dom.style.left = (docWidth - width) / 2 + "px";
+                    dom.style.top = (docHeight - height) / 2 + "px";
+                    dom._left = (docWidth - width) / 2
+                    dom._top = (docHeight - height) / 2
+                  }
+                }
+                dom._left = (docWidth - width) / 2
+                dom._top = (docHeight - height) / 2
               } else if (options.offset === "leftTop") {
                 dom.style.left = 0 + "px";
                 dom.style.top = 0 + "px";
@@ -6647,8 +6692,8 @@
                 dom._top = 0
               } else if (options.offset === "leftBottom") {
                 dom.style.left = 0 + "px";
-                dom.style.top = (docHeight -height) + "px";
-                console.log(height,dom.offsetHeight,dom.clientHeight)
+                dom.style.top = (docHeight - height) + "px";
+                console.log(height, dom.offsetHeight, dom.clientHeight)
                 let oldW = docWidth,
                   oldH = docHeight;
                 window.onresize = function() {
