@@ -1,7 +1,6 @@
 [![npm version](https://img.shields.io/npm/v/vl-layer.svg)](https://www.npmjs.com/package/vl-layer) [![npm downloads](https://img.shields.io/npm/dt/vl-layer.svg)](https://www.npmjs.com/package/vl-layer)   [![MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/gjTool/vl-layer/blob/master/LICENSE) [![GitHub issues](https://img.shields.io/github/issues/gjTool/vl-layer.svg)](https://github.com/gjTool/vl-layer/issues) [![GitHub stars](https://img.shields.io/github/stars/gjTool/vl-layer.svg?style=social)](https://github.com/gjTool/vl-layer/stargazers) [![GitHub forks](https://img.shields.io/github/forks/gjTool/vl-layer.svg?style=social)](https://github.com/gjTool/vl-layer/network/members)  
 
- **一款好用的vue弹窗组件，基于vue-layer改良优化，layui-layer弹窗风格**
- - [原版vue-layer文档](https://github.com/zuoyanart/vue-layer)  
+ **一款好用的vue弹窗组件，layui-layer弹窗风格**
  - [vl-layer github地址](https://github.com/gjTool/vl-layer)  
 
 ## 更新信息
