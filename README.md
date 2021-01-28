@@ -41,6 +41,7 @@ Vue.prototype.$layer = layer(Vue);
 	  };
 	},
 	mounted() {
+		//iframe层并不是真的用了html标签iframe,实质上还是用的div,只是iframe层可以引用自定义组件、页面
 		let layerId = this.$layer.iframe({
 		   title:"提示",
 		   content:{
@@ -141,7 +142,8 @@ Vue.prototype.$layer = layer(Vue);
 ```
 
 ## Attribut
--（注意：信息框，页面层,iframe层,加载层,tips层下各种具体配置参数会有差别，可以看后面各自的配置）
+-（注意1：信息框，页面层,iframe层,加载层,tips层下各种具体配置参数会有差别，可以看后面各自的配置）
+-（注意2：iframe层并不是真的用了html标签iframe,实质上还是用的div,只是iframe层可以引用自定义组件、页面）
 ```javascript
  {
    type: 0, //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
