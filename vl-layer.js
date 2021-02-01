@@ -4902,12 +4902,16 @@
               }))();
             },
             mini: function mini() {
+              var dom = document.getElementById(this.options.id)
               var doms = document.getElementsByClassName("vl-notify-iframe");
               var len = 0,
                 left = 10;
               if (doms && doms.length) {
                 len = doms.length - 1 ? doms.length - 1 : 0;
                 left = (doms.length - 1) * 260 + 10;
+              }
+              if (!isNaN(dom._minLeft)) {
+                left = dom._minLeft
               }
               //最小化窗口
               this.addStyle = {
@@ -4920,8 +4924,7 @@
                 top: "auto"
               };
               this.maxMiniState = 1;
-              var dom = document.getElementById(this.options.id)
-
+              dom._minLeft = left;
               if (dom) {
                 dom._maxMiniState = 1
                 if (this.options.canmove) {
