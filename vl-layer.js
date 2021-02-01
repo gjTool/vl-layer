@@ -4902,11 +4902,18 @@
               }))();
             },
             mini: function mini() {
+              var doms = document.getElementsByClassName("vl-notify-iframe");
+              var len = 0,
+                left = 10;
+              if (doms && doms.length) {
+                len = doms.length - 1 ? doms.length - 1 : 0;
+                left = (doms.length - 1) * 260 + 10;
+              }
               //最小化窗口
               this.addStyle = {
                 overflow: "hidden",
                 bottom: "10px",
-                left: "10px",
+                left: left + "px",
                 width: "100px",
                 height: "42px",
                 minHeight: "42px",
@@ -4931,6 +4938,7 @@
                 }
               }
               this.options.miniCallback && this.options.miniCallback(this.options.id)
+
             },
             max: function max() {
               //最大化窗口
@@ -4974,11 +4982,19 @@
                 left: dom._left + "px",
                 top: dom._top + "px",
               }
-              // this.addStyle = {
-              //   left: (docWidth - width) / 2 + "px",
-              //   top: (docHeight - height) / 2 + "px",
-              // };
+              console.log(this.maxMiniState, " this.maxMiniState")
               this.options.maxminiCallback && this.options.maxminiCallback(this.options.id, this.maxMiniState)
+              if (this.maxMiniState === 1) {
+                if (this.options.minBtnOnly) {
+                  setTimeout(function() {
+                    var max = dom.getElementsByClassName("vlicon-max")[0];
+                    if (max) {
+                      max.style.display = "none";
+                    }
+                    console.log(max)
+                  }, 0)
+                }
+              }
               this.maxMiniState = 0;
               this.nomove = false;
               dom._maxMiniState = 0
@@ -6618,8 +6634,8 @@
               var docHeight = document.documentElement.clientHeight;
               var docWidth = document.documentElement.clientWidth;
 
-              var width =0;
-              var height =0;
+              var width = 0;
+              var height = 0;
               if (options.area && options.area[0] && options.area[1]) {
                 width = parseFloat(options.area[0])
                 height = parseFloat(options.area[1])
@@ -6628,19 +6644,19 @@
               height = isNaN(height) ? dom.offsetHeight : height;
               var _this = this;
               if (Object.prototype.toString.call(options.offset) === "[object Object]") {
-                if (options.offset.left!== undefined&& !isNaN(options.offset.left)) {
+                if (options.offset.left !== undefined && !isNaN(options.offset.left)) {
                   dom.style.left = options.offset.left + "px";
                   dom._left = options.offset.left
                 }
-                if (options.offset.top!== undefined&&!isNaN(options.offset.top)) {
+                if (options.offset.top !== undefined && !isNaN(options.offset.top)) {
                   dom.style.top = options.offset.top + "px"
                   dom._top = options.offset.top
                 }
-                if (options.offset.right!== undefined&&!isNaN(options.offset.right)) {
+                if (options.offset.right !== undefined && !isNaN(options.offset.right)) {
                   dom.style.left = (docWidth - width - options.offset.right) + "px"
                   dom._left = (docWidth - width - options.offset.right)
                 }
-                if (options.offset.bottom!== undefined&&!isNaN(options.offset.bottom)) {
+                if (options.offset.bottom !== undefined && !isNaN(options.offset.bottom)) {
                   dom.style.top = (docHeight - height - options.offset.bottom) + "px"
                   dom._top = (docHeight - height - options.offset.bottom)
                 }
@@ -6650,14 +6666,14 @@
                   if (dom._maxMiniState === 0 || dom._maxMiniState === undefined) {
                     docHeight = document.documentElement.clientHeight;
                     docWidth = document.documentElement.clientWidth;
-                   if (options.offset.right!== undefined&&!isNaN(options.offset.right)) {
-                     dom.style.left = (docWidth - width - options.offset.right) + "px"
-                     dom._left = (docWidth - width - options.offset.right)
-                   }
-                   if (options.offset.bottom!== undefined&&!isNaN(options.offset.bottom)) {
-                     dom.style.top = (docHeight - height - options.offset.bottom) + "px"
-                     dom._top = (docHeight - height - options.offset.bottom)
-                   }
+                    if (options.offset.right !== undefined && !isNaN(options.offset.right)) {
+                      dom.style.left = (docWidth - width - options.offset.right) + "px"
+                      dom._left = (docWidth - width - options.offset.right)
+                    }
+                    if (options.offset.bottom !== undefined && !isNaN(options.offset.bottom)) {
+                      dom.style.top = (docHeight - height - options.offset.bottom) + "px"
+                      dom._top = (docHeight - height - options.offset.bottom)
+                    }
                   }
                 }
               } else if (options.offset === "auto") {
@@ -6752,6 +6768,12 @@
             }
             var fn = self.instancesVue[id].main.success;
             fn && fn.call(self, id)
+            if (options.maxmin && options.minBtnOnly) {
+              var max = dom.getElementsByClassName("vlicon-max")[0];
+              if (max) {
+                max.style.display = "none";
+              }
+            }
             return id;
           };
           /**

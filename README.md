@@ -161,6 +161,7 @@ Vue.prototype.$layer = layer(Vue);
    tipsMore: false,//是否允许多个tips
    shadeClose: true,//点击遮罩是否关闭
    maxmin: true,//开启最大化最小化
+   minBtnOnly:true, //默认false 在  maxmin: true前提下，开启minBtnOnly表示只显示最小化按钮
    scrollbar: true, //是否允许浏览器出现滚动条:默认是允许
    resize: false ,//是否允许拉伸，默认是不允许
    //新增参数
