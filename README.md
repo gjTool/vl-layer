@@ -5,9 +5,7 @@
 
 ## 更新信息
 
-- 2021.01.20 更新： 新增offset的几个固定位置:右上"rightTop"、右下"rightBottom"、左上"leftTop"、左下"leftBottom"
-- 2021.01.22 更新： 新增offset:{left:10,bottom:10}、offset:{right:10,bottom:10}、offset:{right:10,top:10}
-
+- 2021.02.01 更新： 新增属性minBtnOnly
 ## 快速使用
 
 ```shell
