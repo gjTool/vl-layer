@@ -6579,7 +6579,7 @@
 						scrollbar: true,
 						//是否允许浏览器出现滚动条:默认是允许
 						resize: false, //是否允许拉伸，默认是不允许
-						canmove: false //新增属性 false不能拖拽移动 true可以拖拽移动
+						canmove: true //新增属性 false不能拖拽移动 true可以拖拽移动
 					};
 					self.instances = {};
 					self.instancesVue = [];
