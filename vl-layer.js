@@ -6783,6 +6783,14 @@
 								max.style.display = "none";
 							}
 						}
+						var body = dom.getElementsByClassName("vl-notify-content")[0];
+						if (body) {
+							if (options.scrollbar ) {
+								body.style.overflow = "auto";
+							}else{
+								body.style.overflow = "hidden";
+							}
+						}
 						return id;
 					};
 					/**
