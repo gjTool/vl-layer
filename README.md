@@ -196,6 +196,8 @@ Vue.prototype.$layer = layer(Vue);
 ```
 
 ## Method
+
+![alert示例](https://www.gjtool.cn/images/layer-alert.png)
 ```javascript
  this.$layer.alert(content, [options, yes]);
  // options和yes可以省略， 如果您不愿意写options，则可以直接写确定按钮的函数，即yes
@@ -206,6 +208,7 @@ Vue.prototype.$layer = layer(Vue);
  }
 ```
 
+![confirm示例](https://www.gjtool.cn/images/layer-confirm.png)
 ```javascript
  this.$layer.confirm(content, [options, yes, cancel]);
   // options，yes和cancel可以省略， 如果您不愿意写options，则可以直接写确定按钮的函数，即yes，或者覆盖默认的cancel方法。PS：yes和cancel方法不能互换
@@ -215,13 +218,15 @@ Vue.prototype.$layer = layer(Vue);
    this.$layer.close(layerid);
  }
 ```
-
+![loading示例](https://www.gjtool.cn/images/layer-loading1.png)
+![loading示例](https://www.gjtool.cn/images/layer-loading2.png)
 ```javascript
- this.$layer.loadding(option);
+ this.$layer.loading(option);
   // options ={time:3}，3秒自动关闭
   //options = {content:'请等待'} //可传入文字
 ```
 
+![msg示例](https://www.gjtool.cn/images/layer-msg.png)
 ```javascript
  this.$layer.msg(content, [options, end]);
  // options和end可以省略， 如果您不愿意写options，则可以直接写时间到期的回调即可，即end方法
@@ -229,18 +234,21 @@ Vue.prototype.$layer = layer(Vue);
  // content 可以为html
 ```
 
+![prompt示例](https://www.gjtool.cn/images/layer-prompt.png)
 ```javascript
  this.$layer.prompt(options, yes);
  //特殊参数: value 要回显的值
  //formType: 1text,2password,3textarea
 ```
 
+![tips示例](https://www.gjtool.cn/images/layer-tips.png)
 ```javascript
 this.$layer.tips(content, follow, options);
 //content 可以为html
 //follow对css选择器，用来定位目标
 ```
 
+![iframe示例](https://www.gjtool.cn/images/layer-iframe.png)
 ```javascript
 this.$layer.iframe({
   content: {
