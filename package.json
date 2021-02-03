@@ -1,6 +1,6 @@
 {
 	"name": "vl-layer",
-	"version": "0.1.11",
+	"version": "0.1.12",
 	"description": "一款好用的vue弹窗组件，layui-layer弹窗风格",
 	"main": "vl-layer.min.js",
 	"scripts": {
