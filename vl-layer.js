@@ -4991,7 +4991,6 @@
 								left: dom._left + "px",
 								top: dom._top + "px",
 							}
-							console.log(this.maxMiniState, " this.maxMiniState")
 							this.options.maxminiCallback && this.options.maxminiCallback(this.options.id, this.maxMiniState)
 							if (this.maxMiniState === 1) {
 								if (this.options.minBtnOnly) {
@@ -5000,7 +4999,6 @@
 										if (max) {
 											max.style.display = "none";
 										}
-										console.log(max)
 									}, 0)
 								}
 							}
@@ -6718,7 +6716,6 @@
 							} else if (options.offset === "leftBottom") {
 								dom.style.left = 0 + "px";
 								dom.style.top = (docHeight - height) + "px";
-								console.log(height, dom.offsetHeight, dom.clientHeight)
 								let oldW = docWidth,
 									oldH = docHeight;
 								window.onresize = function() {
