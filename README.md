@@ -152,11 +152,11 @@ Vue.prototype.$layer = layer(Vue);
    area: 'auto',//['400px','300px'] 
    offset: 'auto',//[20,10] "rightTop" "rightBottom" "leftTop" "leftBottom" {left:0,top:0}  {left:0,bottom:0}  {right:0,bottom:0} {right:0,top:0}
    icon: -1,
-   btn: '确定',
+   btn: '确定',//[‘确定’，‘取消’]
    time: 0,
    shade: true,//是否显示遮罩
-   yes: ()=>{},
-   cancel: ()=>{},
+   yes: ()=>{},//确定回调
+   cancel: ()=>{},//取消，右上角x关闭按钮回调
    tips: [0,{}],//支持上右下左四个方向，通过1-4进行方向设定,可以设定tips: [1, '#c00']
    tipsMore: false,//是否允许多个tips
    shadeClose: true,//点击遮罩是否关闭
