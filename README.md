@@ -6,7 +6,7 @@
  - [原版vue-layer github地址](https://github.com/zuoyanart/vue-layer)
 ## 更新信息
 
-- 2021.02.02 更新： 修复scrollbar
+- 2021.03.24 更新： 修复prompt的btn修改不生效的bug
 ## 快速使用
 
 ```shell

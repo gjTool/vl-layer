@@ -5239,7 +5239,6 @@
 						},
 						formatBtnText: function formatBtnText() {
 							var a = this.options.btn;
-
 							if (typeof a === "string") {
 								this.btns = [this.options.btn, "取消"];
 								return;
@@ -6058,6 +6057,15 @@
 					var _vm = this;
 					var _h = _vm.$createElement;
 					var _c = _vm._self._c || _h;
+           var a =  _vm._self.options.btn;
+           var btn1 = "确定",btn2="取消";
+           if (typeof a === "string") {
+              btn1= a;
+           }
+           if (a instanceof Array) {
+             	btn1 = a[0] || "确定";
+              btn2 = a[1] || "取消";
+           }
 					return _c('base-drag', {
 						attrs: {
 							"options": _vm.options,
@@ -6180,7 +6188,7 @@
 								return _vm.btnyes($event)
 							}
 						}
-					}, [_vm._v("确定")]), _c('pzbutton', {
+					}, [_vm._v(btn1)]), _c('pzbutton', {
 						attrs: {
 							"btn": "",
 							"size": "small"
@@ -6190,7 +6198,7 @@
 								return _vm.btncancel($event)
 							}
 						}
-					}, [_vm._v("取消")])], 1)])])])
+					}, [_vm._v(btn2)])], 1)])])])
 				}
 				var promptvue_type_template_id_6c69dd9a_scoped_true_staticRenderFns = []
 
@@ -6601,13 +6609,13 @@
 						if (options.type == 2) {
 							options.content.content = Vue.extend(options.content.content);
 						}
-
 						instance.id = id;
 						instance.vm = instance.$mount();
 						self.instances[id] = {
 							inst: instance,
 							type: options.type
 						};
+
 						document.body.appendChild(instance.vm.$el);
 						self.instancesVue[id] = {
 							'mask': '',
