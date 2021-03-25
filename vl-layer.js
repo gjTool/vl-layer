@@ -4674,6 +4674,7 @@
 						}
 					}) : _vm._e()], 2)
 				}
+        // resizeOptions
 				var dragvue_type_template_id_053989da_staticRenderFns = []
 
 
@@ -5014,7 +5015,9 @@
 							if (this.options.resize) {
 								var resize = dom.getElementsByClassName("vl-drag-resize")[0];
 								if (resize) {
-									resize.style.display = "block";
+                  if(this.options.resizeOptions===undefined ||(  this.options.resizeOptions.icon&&this.options.resizeOptions.icon===undefined)){
+                    resize.style.display = "block";
+                  }
 								}
 							}
 						},
@@ -5111,8 +5114,8 @@
 								var o = document.getElementById(this.options.id + "");
 								var top = event.clientY;
 								var left = event.clientX;
-								var oWidth = this.resize.oWidth + (left - this.resize.moveLeft) ;
-								var oHeight = this.resize.oHeight + (top - this.resize.moveTop) ;
+								var oWidth = this.resize.oWidth + (left - this.resize.moveLeft);
+								var oHeight = this.resize.oHeight + (top - this.resize.moveTop);
 
 								if (oWidth < 200 || oHeight < 200) {
 									return;
@@ -6615,7 +6618,6 @@
 							inst: instance,
 							type: options.type
 						};
-
 						document.body.appendChild(instance.vm.$el);
 						self.instancesVue[id] = {
 							'mask': '',
@@ -6625,18 +6627,12 @@
 
 						if (options.shade) {
 							//是否显示遮罩，始终添加遮罩
-							// let layerMask = document.querySelector('.vl-notify-mask');
-							// if (layerMask) { //layerMask
-							// return;
-							// document.body.removeChild(layerMask);
-							// } else {
 							var maskInstance = new maskLayer({
 								data: options
 							});
 							maskInstance.vm = maskInstance.$mount(); // document.body.appendChild(maskInstance.vm.$el);
-
 							document.body.insertBefore(maskInstance.vm.$el, instance.vm.$el);
-							self.instancesVue[id].mask = maskInstance.vm; // }
+							self.instancesVue[id].mask = maskInstance.vm;
 						}
 						var dom = document.getElementById(options.id)
 						if (dom) {
@@ -6646,6 +6642,99 @@
 									title.style.cursor = "inherit";
 								}
 							}
+              var resize={};
+              if (options.resize) {
+                function resizeHandR(event) {
+                	if (!options.resize) {
+                		return
+                	}
+                  resize.type="r"
+                	//拉伸操作
+                	var o = document.getElementById(options.id + "");
+                	resize.oWidth = o.offsetWidth;
+                	resize.oHeight = o.offsetHeight;
+                	resize.moveTop = event.clientY;
+                	resize.moveLeft = event.clientX;
+                	resize.isResize = true;
+                	document.addEventListener("mousemove", resizeHandMove);
+                	document.addEventListener("mouseup", resizeHandMoveEnd);
+                }
+                function resizeHandB(event) {
+                	if (!options.resize) {
+                		return
+                	}
+                  resize.type="b"
+                	//拉伸操作
+                	var o = document.getElementById(options.id + "");
+                	resize.oWidth = o.offsetWidth;
+                	resize.oHeight = o.offsetHeight;
+                	resize.moveTop = event.clientY;
+                	resize.moveLeft = event.clientX;
+                	resize.isResize = true;
+                	document.addEventListener("mousemove", resizeHandMove);
+                	document.addEventListener("mouseup", resizeHandMoveEnd);
+                }
+                function resizeHandMove(event) {
+                	if (!options.resize) {
+                		return
+                	}
+                	if (resize.isResize) {
+                		var o = document.getElementById(options.id + "");
+                		var top = event.clientY;
+                		var left = event.clientX;
+                		var oWidth = resize.oWidth + (left -resize.moveLeft) ;
+                		var oHeight = resize.oHeight + (top - resize.moveTop) ;
+
+                		if (oWidth < 200 || oHeight < 200) {
+                			return;
+                		}
+                		if (o) {
+                      if(resize.type==="r"){
+                        	o.style.width = oWidth + "px";
+                      }else if(resize.type==="b"){
+                         o.style.height = oHeight + "px";
+                      }else{
+                         o.style.width = oWidth + "px";
+                         o.style.height = oHeight + "px";
+                      }
+                		}
+                	}
+                }
+                function resizeHandMoveEnd() {
+                	if (!options.resize) {
+                		return
+                	}
+                	resize.isResize = false;
+                	var o = document.getElementById(options.id + "");
+                	if (o) {
+                		document.removeEventListener("mousemove", resizeHandMove)
+                		document.removeEventListener("mouseup",resizeHandMoveEnd)
+                	}
+                }
+              	var resize = dom.getElementsByClassName("vl-drag-resize")[0];
+              	if (resize) {
+                  if(options.resizeOptions&&options.resizeOptions.icon===false){
+                    resize.style.background = "none";
+                  }
+                  if(options.resizeOptions&&options.resizeOptions.dom===false){
+                    resize.style.display = "none";
+                  }
+              	}
+                if(options.resizeOptions&&options.resizeOptions.right){
+                  var right = document.createElement("span");
+                  right.className = "vl-drag-resize-r";
+                  right.style.cssText = "cursor:ew-resize;display:inline-block;width:3px;height:100%;position:absolute;right:0;bottom:0;";
+                  dom.appendChild(right);
+                  right.addEventListener("mousedown", resizeHandR);
+                }
+                if(options.resizeOptions&&options.resizeOptions.bottom){
+                  var bottom = document.createElement("span");
+                  bottom.className = "vl-drag-resize-b";
+                  bottom.style.cssText = "cursor:ns-resize;display:inline-block;width:100%;height:3px;position:absolute;right:0;bottom:0;";
+                  dom.appendChild(bottom);
+                  bottom.addEventListener("mousedown", resizeHandB);
+                }
+              }
 							var docHeight = document.documentElement.clientHeight;
 							var docWidth = document.documentElement.clientWidth;
 
