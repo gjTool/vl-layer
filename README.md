@@ -6,7 +6,7 @@
  - [原版vue-layer github地址](https://github.com/zuoyanart/vue-layer)
 ## 更新信息
 
-- 2021.03.24 更新： 修复prompt的btn修改不生效的bug
+- 2021.03.25 更新： 新增resizeOptions配置，右边界拉伸，底部边界拉伸
 ## 快速使用
 
 ```shell
@@ -168,7 +168,7 @@ Vue.prototype.$layer = layer(Vue);
 	   icon:true , //是否显示右下角图标 默认显示 false隐藏
 	   dom:true, //是否开启右下角拉伸 
 	   right:false, //是否开启右边界拉伸 
-	   bottom:false //是否开启下边界拉伸 
+	   bottom:false //是否开启底部边界拉伸 
    },
    //新增参数
    canmove:false,  //true可以拖动 false不能拖动

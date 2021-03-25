@@ -5111,8 +5111,8 @@
 								var o = document.getElementById(this.options.id + "");
 								var top = event.clientY;
 								var left = event.clientX;
-								var oWidth = this.resize.oWidth + (left - this.resize.moveLeft) * 2;
-								var oHeight = this.resize.oHeight + (top - this.resize.moveTop) * 2;
+								var oWidth = this.resize.oWidth + (left - this.resize.moveLeft) ;
+								var oHeight = this.resize.oHeight + (top - this.resize.moveTop) ;
 
 								if (oWidth < 200 || oHeight < 200) {
 									return;
