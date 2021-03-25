@@ -164,6 +164,12 @@ Vue.prototype.$layer = layer(Vue);
    minBtnOnly:true, //默认false 在  maxmin: true前提下，开启minBtnOnly表示只显示最小化按钮
    scrollbar: true, //是否允许浏览器出现滚动条:默认是允许
    resize: false ,//是否允许拉伸，默认是不允许
+   resizeOptions:{
+	   icon:true , //是否显示右下角图标 默认显示 false隐藏
+	   dom:true, //是否开启右下角拉伸 
+	   right:false, //是否开启右边界拉伸 
+	   bottom:false //是否开启下边界拉伸 
+   },
    //新增参数
    canmove:false,  //true可以拖动 false不能拖动
 	 //弹窗成功 id弹窗的id
