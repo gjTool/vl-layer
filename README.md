@@ -287,8 +287,8 @@ this.$layer.restore(layerid);
 this.$layer.canmove(layerid,true)
 ```
 ## 前端技术交流微信群：
-![image.png](https://www.gjtool.cn/download/wxqun.jpg?7777)
+![image.png](https://www.gjtool.cn/download/wxqun.jpg?333)
 
 ## 打赏赞助作者，请他喝一杯咖啡：
 ![支付宝二维码](https://www.gjtool.cn/download/zfb.jpg)
- ![微信二维码](https://www.gjtool.cn/download/wx.jpg?123123)
+ ![微信二维码](https://www.gjtool.cn/download/wx.jpg?111)
