@@ -4674,7 +4674,7 @@
 						}
 					}) : _vm._e()], 2)
 				}
-        // resizeOptions
+				// resizeOptions
 				var dragvue_type_template_id_053989da_staticRenderFns = []
 
 
@@ -5015,9 +5015,10 @@
 							if (this.options.resize) {
 								var resize = dom.getElementsByClassName("vl-drag-resize")[0];
 								if (resize) {
-                  if(this.options.resizeOptions===undefined ||(  this.options.resizeOptions.icon&&this.options.resizeOptions.icon===undefined)){
-                    resize.style.display = "block";
-                  }
+									if (this.options.resizeOptions === undefined || (this.options.resizeOptions.icon && this.options.resizeOptions
+											.icon === undefined)) {
+										resize.style.display = "block";
+									}
 								}
 							}
 						},
@@ -6060,15 +6061,16 @@
 					var _vm = this;
 					var _h = _vm.$createElement;
 					var _c = _vm._self._c || _h;
-           var a =  _vm._self.options.btn;
-           var btn1 = "确定",btn2="取消";
-           if (typeof a === "string") {
-              btn1= a;
-           }
-           if (a instanceof Array) {
-             	btn1 = a[0] || "确定";
-              btn2 = a[1] || "取消";
-           }
+					var a = _vm._self.options.btn;
+					var btn1 = "确定",
+						btn2 = "取消";
+					if (typeof a === "string") {
+						btn1 = a;
+					}
+					if (a instanceof Array) {
+						btn1 = a[0] || "确定";
+						btn2 = a[1] || "取消";
+					}
 					return _c('base-drag', {
 						attrs: {
 							"options": _vm.options,
@@ -6642,235 +6644,241 @@
 									title.style.cursor = "inherit";
 								}
 							}
-              var resize={};
-              if (options.resize) {
-                function resizeHandR(event) {
-                	if (!options.resize) {
-                		return
-                	}
-                  resize.type="r"
-                	//拉伸操作
-                	var o = document.getElementById(options.id + "");
-                	resize.oWidth = o.offsetWidth;
-                	resize.oHeight = o.offsetHeight;
-                	resize.moveTop = event.clientY;
-                	resize.moveLeft = event.clientX;
-                	resize.isResize = true;
-                	document.addEventListener("mousemove", resizeHandMove);
-                	document.addEventListener("mouseup", resizeHandMoveEnd);
-                }
-                function resizeHandB(event) {
-                	if (!options.resize) {
-                		return
-                	}
-                  resize.type="b"
-                	//拉伸操作
-                	var o = document.getElementById(options.id + "");
-                	resize.oWidth = o.offsetWidth;
-                	resize.oHeight = o.offsetHeight;
-                	resize.moveTop = event.clientY;
-                	resize.moveLeft = event.clientX;
-                	resize.isResize = true;
-                	document.addEventListener("mousemove", resizeHandMove);
-                	document.addEventListener("mouseup", resizeHandMoveEnd);
-                }
-                function resizeHandMove(event) {
-                	if (!options.resize) {
-                		return
-                	}
-                	if (resize.isResize) {
-                		var o = document.getElementById(options.id + "");
-                		var top = event.clientY;
-                		var left = event.clientX;
-                		var oWidth = resize.oWidth + (left -resize.moveLeft) ;
-                		var oHeight = resize.oHeight + (top - resize.moveTop) ;
+							var resize = {};
+							if (options.resize) {
+								function resizeHandR(event) {
+									if (!options.resize) {
+										return
+									}
+									resize.type = "r"
+									//拉伸操作
+									var o = document.getElementById(options.id + "");
+									resize.oWidth = o.offsetWidth;
+									resize.oHeight = o.offsetHeight;
+									resize.moveTop = event.clientY;
+									resize.moveLeft = event.clientX;
+									resize.isResize = true;
+									document.addEventListener("mousemove", resizeHandMove);
+									document.addEventListener("mouseup", resizeHandMoveEnd);
+								}
 
-                		if (oWidth < 200 || oHeight < 200) {
-                			return;
-                		}
-                		if (o) {
-                      if(resize.type==="r"){
-                        	o.style.width = oWidth + "px";
-                      }else if(resize.type==="b"){
-                         o.style.height = oHeight + "px";
-                      }else{
-                         o.style.width = oWidth + "px";
-                         o.style.height = oHeight + "px";
-                      }
-                		}
-                	}
-                }
-                function resizeHandMoveEnd() {
-                	if (!options.resize) {
-                		return
-                	}
-                	resize.isResize = false;
-                	var o = document.getElementById(options.id + "");
-                	if (o) {
-                		document.removeEventListener("mousemove", resizeHandMove)
-                		document.removeEventListener("mouseup",resizeHandMoveEnd)
-                	}
-                }
-              	var resize = dom.getElementsByClassName("vl-drag-resize")[0];
-              	if (resize) {
-                  if(options.resizeOptions&&options.resizeOptions.icon===false){
-                    resize.style.background = "none";
-                  }
-                  if(options.resizeOptions&&options.resizeOptions.dom===false){
-                    resize.style.display = "none";
-                  }
-              	}
-                if(options.resizeOptions&&options.resizeOptions.right){
-                  var right = document.createElement("span");
-                  right.className = "vl-drag-resize-r";
-                  right.style.cssText = "cursor:ew-resize;display:inline-block;width:3px;height:100%;position:absolute;right:0;bottom:0;";
-                  dom.appendChild(right);
-                  right.addEventListener("mousedown", resizeHandR);
-                }
-                if(options.resizeOptions&&options.resizeOptions.bottom){
-                  var bottom = document.createElement("span");
-                  bottom.className = "vl-drag-resize-b";
-                  bottom.style.cssText = "cursor:ns-resize;display:inline-block;width:100%;height:3px;position:absolute;right:0;bottom:0;";
-                  dom.appendChild(bottom);
-                  bottom.addEventListener("mousedown", resizeHandB);
-                }
-              }
+								function resizeHandB(event) {
+									if (!options.resize) {
+										return
+									}
+									resize.type = "b"
+									//拉伸操作
+									var o = document.getElementById(options.id + "");
+									resize.oWidth = o.offsetWidth;
+									resize.oHeight = o.offsetHeight;
+									resize.moveTop = event.clientY;
+									resize.moveLeft = event.clientX;
+									resize.isResize = true;
+									document.addEventListener("mousemove", resizeHandMove);
+									document.addEventListener("mouseup", resizeHandMoveEnd);
+								}
+
+								function resizeHandMove(event) {
+									if (!options.resize) {
+										return
+									}
+									if (resize.isResize) {
+										var o = document.getElementById(options.id + "");
+										var top = event.clientY;
+										var left = event.clientX;
+										var oWidth = resize.oWidth + (left - resize.moveLeft);
+										var oHeight = resize.oHeight + (top - resize.moveTop);
+
+										if (oWidth < 200 || oHeight < 200) {
+											return;
+										}
+										if (o) {
+											if (resize.type === "r") {
+												o.style.width = oWidth + "px";
+											} else if (resize.type === "b") {
+												o.style.height = oHeight + "px";
+											} else {
+												o.style.width = oWidth + "px";
+												o.style.height = oHeight + "px";
+											}
+										}
+									}
+								}
+
+								function resizeHandMoveEnd() {
+									if (!options.resize) {
+										return
+									}
+									resize.isResize = false;
+									var o = document.getElementById(options.id + "");
+									if (o) {
+										document.removeEventListener("mousemove", resizeHandMove)
+										document.removeEventListener("mouseup", resizeHandMoveEnd)
+									}
+								}
+								var resize = dom.getElementsByClassName("vl-drag-resize")[0];
+								if (resize) {
+									if (options.resizeOptions && options.resizeOptions.icon === false) {
+										resize.style.background = "none";
+									}
+									if (options.resizeOptions && options.resizeOptions.dom === false) {
+										resize.style.display = "none";
+									}
+								}
+								if (options.resizeOptions && options.resizeOptions.right) {
+									var right = document.createElement("span");
+									right.className = "vl-drag-resize-r";
+									right.style.cssText =
+										"cursor:ew-resize;display:inline-block;width:3px;height:100%;position:absolute;right:0;bottom:0;";
+									dom.appendChild(right);
+									right.addEventListener("mousedown", resizeHandR);
+								}
+								if (options.resizeOptions && options.resizeOptions.bottom) {
+									var bottom = document.createElement("span");
+									bottom.className = "vl-drag-resize-b";
+									bottom.style.cssText =
+										"cursor:ns-resize;display:inline-block;width:100%;height:3px;position:absolute;right:0;bottom:0;";
+									dom.appendChild(bottom);
+									bottom.addEventListener("mousedown", resizeHandB);
+								}
+							}
 							var docHeight = document.documentElement.clientHeight;
 							var docWidth = document.documentElement.clientWidth;
-
-							var width = 0;
-							var height = 0;
-							if (options.area && options.area[0] && options.area[1]) {
-								width = parseFloat(options.area[0])
-								height = parseFloat(options.area[1])
-							}
-							width = isNaN(width) ? dom.offsetWidth : width;
-							height = isNaN(height) ? dom.offsetHeight : height;
-							var _this = this;
-							if (Object.prototype.toString.call(options.offset) === "[object Object]") {
-								if (options.offset.left !== undefined && !isNaN(options.offset.left)) {
-									dom.style.left = options.offset.left + "px";
-									dom._left = options.offset.left
+							setTimeout(function() {
+								var width = 0;
+								var height = 0;
+								if (options.area && options.area[0] && options.area[1]) {
+									width = parseFloat(options.area[0])
+									height = parseFloat(options.area[1])
 								}
-								if (options.offset.top !== undefined && !isNaN(options.offset.top)) {
-									dom.style.top = options.offset.top + "px"
-									dom._top = options.offset.top
-								}
-								if (options.offset.right !== undefined && !isNaN(options.offset.right)) {
-									dom.style.left = (docWidth - width - options.offset.right) + "px"
-									dom._left = (docWidth - width - options.offset.right)
-								}
-								if (options.offset.bottom !== undefined && !isNaN(options.offset.bottom)) {
-									dom.style.top = (docHeight - height - options.offset.bottom) + "px"
-									dom._top = (docHeight - height - options.offset.bottom)
-								}
-								let oldW = docWidth,
-									oldH = docHeight;
-								window.onresize = function() {
-									if (dom._maxMiniState === 0 || dom._maxMiniState === undefined) {
-										docHeight = document.documentElement.clientHeight;
-										docWidth = document.documentElement.clientWidth;
-										if (options.offset.right !== undefined && !isNaN(options.offset.right)) {
-											dom.style.left = (docWidth - width - options.offset.right) + "px"
-											dom._left = (docWidth - width - options.offset.right)
+								width = isNaN(width) ? dom.offsetWidth : width;
+								height = isNaN(height) ? dom.offsetHeight : height;
+								var _this = this;
+								if (Object.prototype.toString.call(options.offset) === "[object Object]") {
+									if (options.offset.left !== undefined && !isNaN(options.offset.left)) {
+										dom.style.left = options.offset.left + "px";
+										dom._left = options.offset.left
+									}
+									if (options.offset.top !== undefined && !isNaN(options.offset.top)) {
+										dom.style.top = options.offset.top + "px"
+										dom._top = options.offset.top
+									}
+									if (options.offset.right !== undefined && !isNaN(options.offset.right)) {
+										dom.style.left = (docWidth - width - options.offset.right) + "px"
+										dom._left = (docWidth - width - options.offset.right)
+									}
+									if (options.offset.bottom !== undefined && !isNaN(options.offset.bottom)) {
+										dom.style.top = (docHeight - height - options.offset.bottom) + "px"
+										dom._top = (docHeight - height - options.offset.bottom)
+									}
+									let oldW = docWidth,
+										oldH = docHeight;
+									window.onresize = function() {
+										if (dom._maxMiniState === 0 || dom._maxMiniState === undefined) {
+											docHeight = document.documentElement.clientHeight;
+											docWidth = document.documentElement.clientWidth;
+											if (options.offset.right !== undefined && !isNaN(options.offset.right)) {
+												dom.style.left = (docWidth - width - options.offset.right) + "px"
+												dom._left = (docWidth - width - options.offset.right)
+											}
+											if (options.offset.bottom !== undefined && !isNaN(options.offset.bottom)) {
+												dom.style.top = (docHeight - height - options.offset.bottom) + "px"
+												dom._top = (docHeight - height - options.offset.bottom)
+											}
 										}
-										if (options.offset.bottom !== undefined && !isNaN(options.offset.bottom)) {
-											dom.style.top = (docHeight - height - options.offset.bottom) + "px"
-											dom._top = (docHeight - height - options.offset.bottom)
+									}
+								} else if (options.offset === "auto") {
+									dom.style.left = (docWidth - dom.offsetWidth) / 2 + "px";
+									dom.style.top = (docHeight - dom.offsetHeight) / 2 + "px";
+									let oldW = docWidth,
+										oldH = docHeight;
+									window.onresize = function() {
+										if (dom._maxMiniState === 0 || dom._maxMiniState === undefined) {
+											docHeight = document.documentElement.clientHeight;
+											docWidth = document.documentElement.clientWidth;
+											dom.style.left = (docWidth - width) / 2 + "px";
+											dom.style.top = (docHeight - height) / 2 + "px";
+											dom._left = (docWidth - width) / 2
+											dom._top = (docHeight - height) / 2
 										}
 									}
-								}
-							} else if (options.offset === "auto") {
-								dom.style.left = (docWidth - width) / 2 + "px";
-								dom.style.top = (docHeight - height) / 2 + "px";
-								let oldW = docWidth,
-									oldH = docHeight;
-								window.onresize = function() {
-									if (dom._maxMiniState === 0 || dom._maxMiniState === undefined) {
-										docHeight = document.documentElement.clientHeight;
-										docWidth = document.documentElement.clientWidth;
-										dom.style.left = (docWidth - width) / 2 + "px";
-										dom.style.top = (docHeight - height) / 2 + "px";
-										dom._left = (docWidth - width) / 2
-										dom._top = (docHeight - height) / 2
+									dom._left = (docWidth - width) / 2
+									dom._top = (docHeight - height) / 2
+								} else if (options.offset === "leftTop") {
+									dom.style.left = 0 + "px";
+									dom.style.top = 0 + "px";
+									window.onresize = function() {
+										if (dom._maxMiniState === 0 || dom._maxMiniState === undefined) {
+											dom.style.left = 0 + "px";
+											dom.style.top = 0 + "px";
+											dom._left = 0
+											dom._top = 0
+										}
+									}
+									dom._left = 0
+									dom._top = 0
+								} else if (options.offset === "leftBottom") {
+									dom.style.left = 0 + "px";
+									dom.style.top = (docHeight - height) + "px";
+									let oldW = docWidth,
+										oldH = docHeight;
+									window.onresize = function() {
+										if (dom._maxMiniState === 0 || dom._maxMiniState === undefined) {
+											docHeight = document.documentElement.clientHeight;
+											docWidth = document.documentElement.clientWidth;
+											dom.style.left = 0 + "px";
+											dom.style.top = (docHeight - height) + "px";
+											dom._left = 0
+											dom._top = (docHeight - height)
+										}
+									}
+									dom._left = 0
+									dom._top = (docHeight - height)
+								} else if (options.offset === "rightTop") {
+									dom.style.left = (docWidth - width) + "px";
+									dom.style.top = 0 + "px";
+									let oldW = docWidth,
+										oldH = docHeight;
+									window.onresize = function() {
+										if (dom._maxMiniState === 0 || dom._maxMiniState === undefined) {
+											docHeight = document.documentElement.clientHeight;
+											docWidth = document.documentElement.clientWidth;
+											dom.style.left = (docWidth - width) + "px";
+											dom.style.top = 0 + "px";
+											dom._left = (docWidth - width)
+											dom._top = 0
+										}
+									}
+									dom._left = (docWidth - width)
+									dom._top = 0
+								} else if (options.offset === "rightBottom") {
+									dom.style.left = (docWidth - width) + "px";
+									dom.style.top = (docHeight - height) + "px";
+									let oldW = docWidth,
+										oldH = docHeight;
+									window.onresize = function() {
+										if (dom._maxMiniState === 0 || dom._maxMiniState === undefined) {
+											docHeight = document.documentElement.clientHeight;
+											docWidth = document.documentElement.clientWidth;
+											dom.style.left = (docWidth - width) + "px";
+											dom.style.top = (docHeight - height) + "px";
+											dom._left = (docWidth - width)
+											dom._top = (docHeight - height)
+										}
+									}
+									dom._left = (docWidth - width)
+									dom._top = (docHeight - height)
+								} else {
+									window.onresize = null;
+									if (options.offset) {
+										dom._left = options.offset[0]
+										dom._top = options.offset[1]
 									}
 								}
-								dom._left = (docWidth - width) / 2
-								dom._top = (docHeight - height) / 2
-							} else if (options.offset === "leftTop") {
-								dom.style.left = 0 + "px";
-								dom.style.top = 0 + "px";
-								window.onresize = function() {
-									if (dom._maxMiniState === 0 || dom._maxMiniState === undefined) {
-										dom.style.left = 0 + "px";
-										dom.style.top = 0 + "px";
-										dom._left = 0
-										dom._top = 0
-									}
-								}
-								dom._left = 0
-								dom._top = 0
-							} else if (options.offset === "leftBottom") {
-								dom.style.left = 0 + "px";
-								dom.style.top = (docHeight - height) + "px";
-								let oldW = docWidth,
-									oldH = docHeight;
-								window.onresize = function() {
-									if (dom._maxMiniState === 0 || dom._maxMiniState === undefined) {
-										docHeight = document.documentElement.clientHeight;
-										docWidth = document.documentElement.clientWidth;
-										dom.style.left = 0 + "px";
-										dom.style.top = (docHeight - height) + "px";
-										dom._left = 0
-										dom._top = (docHeight - height)
-									}
-								}
-								dom._left = 0
-								dom._top = (docHeight - height)
-							} else if (options.offset === "rightTop") {
-								dom.style.left = (docWidth - width) + "px";
-								dom.style.top = 0 + "px";
-								let oldW = docWidth,
-									oldH = docHeight;
-								window.onresize = function() {
-									if (dom._maxMiniState === 0 || dom._maxMiniState === undefined) {
-										docHeight = document.documentElement.clientHeight;
-										docWidth = document.documentElement.clientWidth;
-										dom.style.left = (docWidth - width) + "px";
-										dom.style.top = 0 + "px";
-										dom._left = (docWidth - width)
-										dom._top = 0
-									}
-								}
-								dom._left = (docWidth - width)
-								dom._top = 0
-							} else if (options.offset === "rightBottom") {
-								dom.style.left = (docWidth - width) + "px";
-								dom.style.top = (docHeight - height) + "px";
-								let oldW = docWidth,
-									oldH = docHeight;
-								window.onresize = function() {
-									if (dom._maxMiniState === 0 || dom._maxMiniState === undefined) {
-										docHeight = document.documentElement.clientHeight;
-										docWidth = document.documentElement.clientWidth;
-										dom.style.left = (docWidth - width) + "px";
-										dom.style.top = (docHeight - height) + "px";
-										dom._left = (docWidth - width)
-										dom._top = (docHeight - height)
-									}
-								}
-								dom._left = (docWidth - width)
-								dom._top = (docHeight - height)
-							} else {
-								window.onresize = null;
-								if (options.offset) {
-									dom._left = options.offset[0]
-									dom._top = options.offset[1]
-								}
-							}
+								var fn = self.instancesVue[id].main.success;
+								fn && fn.call(self, id)
+							}, 50)
 						}
-						var fn = self.instancesVue[id].main.success;
-						fn && fn.call(self, id)
 						if (options.maxmin && options.minBtnOnly) {
 							var max = dom.getElementsByClassName("vlicon-max")[0];
 							if (max) {
@@ -6879,9 +6887,9 @@
 						}
 						var body = dom.getElementsByClassName("vl-notify-content")[0];
 						if (body) {
-							if (options.scrollbar ) {
+							if (options.scrollbar) {
 								body.style.overflow = "auto";
-							}else{
+							} else {
 								body.style.overflow = "hidden";
 							}
 						}
