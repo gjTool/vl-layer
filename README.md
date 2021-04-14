@@ -6,7 +6,7 @@
  - [原版vue-layer github地址](https://github.com/zuoyanart/vue-layer)
 ## 更新信息
 
-- 2021.03.25 更新： 新增resizeOptions配置，右边界拉伸，底部边界拉伸
+- 2021.04.14 更新： 修复area:["auto","auto"]时，居中问题
 ## 快速使用
 
 ```shell
