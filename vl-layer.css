@@ -247,7 +247,7 @@
 }
 
 .vl-notify {
-  position: fixed;
+  position: absolute;
   z-index: 1000;
   -webkit-box-sizing: border-box;
   box-sizing: border-box
