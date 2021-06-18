@@ -5125,6 +5125,10 @@
 
 							var docHeight = document.documentElement.clientHeight;
 							var docWidth = document.documentElement.clientWidth;
+							if(this.options.parentDom){
+								docHeight = this.options.parentDom.offsetHeight;
+								docWidth = this.options.parentDom.offsetWidth;
+							}
 							var width = dom.offsetWidth;
 							var height = dom.offsetHeight;
 							this.addStyle = {
@@ -5196,6 +5200,10 @@
 									.moveLeft);
 								var docHeight = document.documentElement.clientHeight;
 								var docWidth = document.documentElement.clientWidth;
+								if(this.options.parentDom){
+									docHeight = this.options.parentDom.offsetHeight;
+									docWidth = this.options.parentDom.offsetWidth;
+								}
 								var width = o.offsetWidth;
 								var height = o.offsetHeight;
 								if (top <= 0) {
@@ -6869,7 +6877,12 @@
 							inst: instance,
 							type: options.type
 						};
-						document.body.appendChild(instance.vm.$el);
+						if(options.parentDom){
+							options.parentDom.appendChild(instance.vm.$el);
+						}else{
+							document.body.appendChild(instance.vm.$el);
+						}
+						
 						self.instancesVue[id] = {
 							'mask': '',
 							'main': instance.vm,
@@ -6997,6 +7010,10 @@
 							}
 							var docHeight = document.documentElement.clientHeight;
 							var docWidth = document.documentElement.clientWidth;
+							if(options.parentDom){
+								docHeight = options.parentDom.offsetHeight;
+								docWidth = options.parentDom.offsetWidth;
+							}
 							var width = 0;
 							var height = 0;
 							if (options.area && options.area[0] && options.area[1]) {
@@ -7037,6 +7054,10 @@
 										undefined) {
 										docHeight = document.documentElement.clientHeight;
 										docWidth = document.documentElement.clientWidth;
+										if(options.parentDom){
+											docHeight = options.parentDom.offsetHeight;
+											docWidth = options.parentDom.offsetWidth;
+										}
 										if (options.offset.right !== undefined && !isNaN(options
 												.offset.right)) {
 											dom.style.left = (docWidth - width - options.offset
@@ -7063,6 +7084,10 @@
 										undefined) {
 										docHeight = document.documentElement.clientHeight;
 										docWidth = document.documentElement.clientWidth;
+										if(options.parentDom){
+											docHeight = options.parentDom.offsetHeight;
+											docWidth = options.parentDom.offsetWidth;
+										}
 										dom.style.left = (docWidth - width) / 2 + "px";
 										dom.style.top = (docHeight - height) / 2 + "px";
 										dom._left = (docWidth - width) / 2
@@ -7095,6 +7120,10 @@
 										undefined) {
 										docHeight = document.documentElement.clientHeight;
 										docWidth = document.documentElement.clientWidth;
+										if(options.parentDom){
+											docHeight = options.parentDom.offsetHeight;
+											docWidth = options.parentDom.offsetWidth;
+										}
 										dom.style.left = 0 + "px";
 										dom.style.top = (docHeight - height) + "px";
 										dom._left = 0
@@ -7113,6 +7142,10 @@
 										undefined) {
 										docHeight = document.documentElement.clientHeight;
 										docWidth = document.documentElement.clientWidth;
+										if(options.parentDom){
+											docHeight = options.parentDom.offsetHeight;
+											docWidth = options.parentDom.offsetWidth;
+										}
 										dom.style.left = (docWidth - width) + "px";
 										dom.style.top = 0 + "px";
 										dom._left = (docWidth - width)
@@ -7131,6 +7164,10 @@
 										undefined) {
 										docHeight = document.documentElement.clientHeight;
 										docWidth = document.documentElement.clientWidth;
+										if(options.parentDom){
+											docHeight = options.parentDom.offsetHeight;
+											docWidth = options.parentDom.offsetWidth;
+										}
 										dom.style.left = (docWidth - width) + "px";
 										dom.style.top = (docHeight - height) + "px";
 										dom._left = (docWidth - width)
@@ -7239,6 +7276,10 @@
 							}
 							var docHeight = document.documentElement.clientHeight;
 							var docWidth = document.documentElement.clientWidth;
+							if(options.parentDom){
+								docHeight = options.parentDom.offsetHeight;
+								docWidth = options.parentDom.offsetWidth;
+							}
 							setTimeout(function() {
 								var width = 0;
 								var height = 0;
@@ -7272,6 +7313,10 @@
 										if (dom._maxMiniState === 0 || dom._maxMiniState === undefined) {
 											docHeight = document.documentElement.clientHeight;
 											docWidth = document.documentElement.clientWidth;
+											if(options.parentDom){
+												docHeight = options.parentDom.offsetHeight;
+												docWidth = options.parentDom.offsetWidth;
+											}
 											if (options.offset.right !== undefined && !isNaN(options.offset.right)) {
 												dom.style.left = (docWidth - width - options.offset.right) + "px"
 												dom._left = (docWidth - width - options.offset.right)
@@ -7291,6 +7336,10 @@
 										if (dom._maxMiniState === 0 || dom._maxMiniState === undefined) {
 											docHeight = document.documentElement.clientHeight;
 											docWidth = document.documentElement.clientWidth;
+											if(options.parentDom){
+												docHeight = options.parentDom.offsetHeight;
+												docWidth = options.parentDom.offsetWidth;
+											}
 											dom.style.left = (docWidth - width) / 2 + "px";
 											dom.style.top = (docHeight - height) / 2 + "px";
 											dom._left = (docWidth - width) / 2
@@ -7321,6 +7370,10 @@
 										if (dom._maxMiniState === 0 || dom._maxMiniState === undefined) {
 											docHeight = document.documentElement.clientHeight;
 											docWidth = document.documentElement.clientWidth;
+											if(options.parentDom){
+												docHeight = options.parentDom.offsetHeight;
+												docWidth = options.parentDom.offsetWidth;
+											}
 											dom.style.left = 0 + "px";
 											dom.style.top = (docHeight - height) + "px";
 											dom._left = 0
@@ -7338,6 +7391,10 @@
 										if (dom._maxMiniState === 0 || dom._maxMiniState === undefined) {
 											docHeight = document.documentElement.clientHeight;
 											docWidth = document.documentElement.clientWidth;
+											if(options.parentDom){
+												docHeight = options.parentDom.offsetHeight;
+												docWidth = options.parentDom.offsetWidth;
+											}
 											dom.style.left = (docWidth - width) + "px";
 											dom.style.top = 0 + "px";
 											dom._left = (docWidth - width)
@@ -7355,6 +7412,10 @@
 										if (dom._maxMiniState === 0 || dom._maxMiniState === undefined) {
 											docHeight = document.documentElement.clientHeight;
 											docWidth = document.documentElement.clientWidth;
+											if(options.parentDom){
+												docHeight = options.parentDom.offsetHeight;
+												docWidth = options.parentDom.offsetWidth;
+											}
 											dom.style.left = (docWidth - width) + "px";
 											dom.style.top = (docHeight - height) + "px";
 											dom._left = (docWidth - width)
@@ -7654,7 +7715,12 @@
 						var oElm = document.getElementById(id);
 
 						if (oElm) {
-							document.body.removeChild(oElm);
+							var div = oElm.parentNode;
+							if(div){
+								div.removeChild(oElm);
+							}else{
+								document.body.removeChild(oElm);
+							}
 							delete self.instances[id];
 							self.instancesVue[id].main.$destroy();
 
@@ -7683,7 +7749,12 @@
 							if (self.instancesVue[id].main.shade) {
 								var layerMask = document.getElementById(id + '_mask');
 								var maskId = id + '_mask';
-								document.body.removeChild(layerMask);
+								var div = layerMask.parentNode;
+								if(div){
+									div.removeChild(layerMask);
+								}else{
+									document.body.removeChild(layerMask);
+								}
 
 								if (self.instancesVue[maskId]) {
 									self.instancesVue[maskId].mask.$destroy();
@@ -7696,7 +7767,12 @@
 								var oElm = document.getElementById(id);
 
 								if (oElm) {
-									document.body.removeChild(oElm);
+									var div = oElm.parentNode;
+									if(div){
+										div.removeChild(oElm);
+									}else{
+										document.body.removeChild(oElm);
+									}
 									delete self.instances[id];
 									self.instancesVue[id].main.$destroy();
 

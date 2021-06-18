@@ -6,7 +6,7 @@
  - [原版vue-layer github地址](https://github.com/zuoyanart/vue-layer)
 ## 更新信息
 
-- 2021.04.14 更新： 修复area:["auto","auto"]时，居中问题
+- 2021.06.18 更新： 新增parentDom属性，弹窗的父元素，弹窗创建后会append到父元素
 ## 快速使用
 
 ```shell
@@ -164,6 +164,7 @@ Vue.prototype.$layer = layer(Vue);
    minBtnOnly:true, //默认false 在  maxmin: true前提下，开启minBtnOnly表示只显示最小化按钮
    scrollbar: true, //是否允许浏览器出现滚动条:默认是允许
    resize: false ,//是否允许拉伸，默认是不允许
+   parentDom: HTMLdiv,//html DOM元素，弹窗所在的父元素
    resizeOptions:{
 	   icon:true , //是否显示右下角图标 默认显示 false隐藏
 	   dom:true, //是否开启右下角拉伸 
