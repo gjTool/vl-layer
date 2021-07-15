@@ -293,3 +293,6 @@ this.$layer.canmove(layerid,true)
 ## 打赏赞助作者，请他喝一杯咖啡：
 ![支付宝二维码](https://www.gjtool.cn/download/zfb.jpg)
  ![微信二维码](https://www.gjtool.cn/download/wx.jpg?123123534253453453245)
+
+## 免费看vip电影小程序，扫码即可打开小程序观看：
+![小程序二维码](https://www.gjtool.cn/h5/static/weixin_advert.jpeg?1111)
