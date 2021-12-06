@@ -4,6 +4,9 @@
  - 起初使用vue-layer，但是奈何bug太多，作者又没有时间修复，所以只能自己动手修改源码，添加自己想要的功能，修改了图标，索性发布到npm上，这样也能帮到其他想用vue-layer的同学。
  - [vl-layer github地址](https://github.com/gjTool/vl-layer)  
  - [原版vue-layer github地址](https://github.com/zuoyanart/vue-layer)
+
+### **QQ交流群：196422291**
+
 ## 更新信息
 
 - 2021.06.18 更新： 新增parentDom属性，弹窗的父元素，弹窗创建后会append到父元素
@@ -287,12 +290,9 @@ this.$layer.restore(layerid);
 //弹窗是否可以拖动 true可以 false不能
 this.$layer.canmove(layerid,true)
 ```
-## 前端技术交流微信群：
-![image.png](https://www.gjtool.cn/download/wxqun.jpg?99999444442222111)
+### **QQ交流群：196422291**
 
 ## 打赏赞助作者，请他喝一杯咖啡：
 ![支付宝二维码](https://www.gjtool.cn/download/zfb.jpg)
  ![微信二维码](https://www.gjtool.cn/download/wx.jpg?123123534253453453245)
 
-## 免费看vip电影小程序，扫码即可打开小程序观看：
-![小程序二维码](https://www.gjtool.cn/h5/static/weixin_advert.jpeg?1111)
